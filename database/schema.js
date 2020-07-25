@@ -9,9 +9,6 @@ const entrySchema = new mongoose.Schema({
   qty: Number,
   date: String,
   type: String
-},
-{
-  timestamps: true
 }
 );
 

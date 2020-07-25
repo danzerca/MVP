@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
-// import Welcome from './components/Welcome.jsx';
+import Post from './components/Post.jsx';
 import Exchange from './components/Exchange.jsx';
 const entries = [
   {
@@ -22,6 +22,12 @@ class App extends React.Component {
       avail: entries
     };
 
+
+
+  }
+
+  handleSubmit(e) {
+    console.log(e);
   }
 
 
@@ -30,7 +36,9 @@ class App extends React.Component {
 
       <div>
         <h1>Welcome to GarSHAREden!</h1>
+        <Post onSubmit={this.handleSubmit}/>
         <Exchange items={this.state.avail}/>
+
       </div>
 
     )

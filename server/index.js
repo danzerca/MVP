@@ -1,15 +1,19 @@
 const express = require('express')
 const bodyParser = require('body-parser');
-const app = express()
+const app = express();
 const port = 3000;
-// add const db = require(path to db index)
-// add babel and webpack
+const db = require('../database/index.js');
+
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.post('/items', function(req, res) {
+  db.find()
+  .then((all) => res.json(all))
+  .catch(err => err);
+})
 
 app.listen(port, () => console.log(`GarSHAREden listening at http://localhost:${port}`))
