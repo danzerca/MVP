@@ -1,0 +1,19 @@
+{
+  "name": "mvp",
+  "version": "1.0.0",
+  "description": "Garden Starter",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danzerca/MVP.git"
+  },
+  "author": "Danica Fisher",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danzerca/MVP/issues"
+  },
+  "homepage": "https://github.com/danzerca/MVP#readme"
+}
