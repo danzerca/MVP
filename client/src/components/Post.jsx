@@ -20,11 +20,10 @@ class Post extends React.Component {
 
   handleChange(e) {
     this.setState({[e.target.id]: e.target.value});
-
   }
 
   handleClick() {
-    console.log(this.state);
+    this.props.onSubmit(this.state);
   }
 
   render() {
@@ -49,10 +48,11 @@ class Post extends React.Component {
           <br></br>
         </form>
         <label type="type">Select One:</label>
-        <select >
-          <option value="free">Free</option>
-          <option value="trade">Trade</option>
-          <option value="either">Either</option>
+        <select id="type" onChange={this.handleChange}>
+        <option id="type" >-----</option>
+          <option id="type" value="free" >Free</option>
+          <option id="type" value="trade" >Trade</option>
+          <option id="type" value="either" >Either</option>
         </select>
         <button onClick={this.handleClick}>Offer Up</button>
 

@@ -22,12 +22,39 @@ class App extends React.Component {
       avail: entries
     };
 
-
-
   }
 
-  handleSubmit(e) {
-    console.log(e);
+  componentDidMount() {
+    this.getItems();
+  }
+
+  getItems(newEntry) {
+    console.log('submitted: ', newEntry);
+    var state = this;
+    $.ajax('/items', {
+      method: 'GET',
+      dataType: 'json',
+      success: function(next) {
+        state.setState({
+          avail: next
+        })
+        state.render();
+      }
+    });
+  }
+
+  handleSubmit(newEntry) {
+    console.log('submitted: ', newEntry);
+    var state = this;
+    $.ajax('/items', {
+      method: 'POST',
+      dataType: 'json',
+      data: newEntry,
+      success: function(next) {
+        console.log('Created: ', next);
+        state.render();
+      }
+    });
   }
 
 
