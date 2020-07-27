@@ -66,9 +66,13 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Welcome to GarSHAREden!</h1>
-        <Post onSubmit={this.handleSubmit} onRefresh={this.getItems}/>
-        <Exchange items={this.state.avail} onUpdate={this.updateItem} onRefresh={this.getItems}/>
+        <div className="full-header">
+          <h1 className="header">Welcome to GarSHAREden!</h1>
+          <h3 className="sub-header">a place where community gardeners can exchange and offer produce and garden tools</h3>
+        </div>
+
+        <Post onSubmit={this.handleSubmit} onRefresh={this.getItems.bind(this)}/>
+        <Exchange items={this.state.avail} onUpdate={this.updateItem} onRefresh={this.getItems.bind(this)}/>
       </div>
 
     )

@@ -15,16 +15,16 @@ class Exchange extends React.Component {
   render() {
     var curr = this;
     return (
-    <div className="exchange">
+    <div className="exchange-container">
       {curr.props.items.map((each) => (
           <span className="list-item" >
             <div className="item-title">{each.title}</div>
-            <img className="item-image" src={each.img} width="200" height="200"/>
+            <img className="item-image" src={each.img} />
             <div className="item-qty">Available units: {each.qty}</div>
             <div className="item-date">Date available: {each.date}</div>
             <div className="item-type">{each.type}</div>
             <div className="item-user">{each.user}</div>
-            <button onClick={curr.handleClick.bind(this, each)}>Claim</button>
+            <button className="claim" onClick={curr.handleClick.bind(this, each)}>Claim</button>
           </span>
         ))}
 
