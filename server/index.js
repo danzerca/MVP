@@ -17,23 +17,27 @@ app.get('/items', function(req, res) {
   .catch(err => err);
 })
 
-app.post('/items', function(req, res) {
-  console.log('post req entered: ', req.body);
+app.post('/items', (req, res) => {
   Entry.create(req.body)
-  .then(res.send(req.body.title))
+  .then( () => res.send(req.body.title))
   .catch(err => err);
 })
 
-app.put('/items', function(req, res) {
-  db.updateOne()
-  .then()
-  .catch(err => err);
+app.patch('/items', (req, res) => {
+  Entry.findById(req.body._id, (err, results) => {
+    results.qty = results.qty - 1;
+    results.save();
+    if (err) {
+      res.send(err);
+    }
+    res.send(results);
+  });
 })
 
 app.delete('/items', function(req, res) {
-  db.findOneAndDelete()
-  .then()
-  .catch(err => err);
+  Entry.deleteOne(req.body)
+    .then(res.send(res.deletedCount));
+
 })
 
 

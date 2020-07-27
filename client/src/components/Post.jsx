@@ -24,6 +24,7 @@ class Post extends React.Component {
 
   handleClick() {
     this.props.onSubmit(this.state);
+    this.props.onRefresh();
   }
 
   render() {
