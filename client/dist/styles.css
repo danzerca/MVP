@@ -33,12 +33,12 @@ body {
   grid-gap: 10px;
   border: thick double #32a1ce;
   padding: 10px;
+  margin-bottom: 10px;
   text-align: right;
   font-size: 20px;
   font-weight: 100;
   background-color: #BFE3B4;
 }
-
 
 .item1 {
   grid-row: 1 / 4;
@@ -79,7 +79,85 @@ input {
   width: 100px;
   border-radius: 25%;
   font-size: 30px;
+}
+/* Search */
+.search-box {
+  display: grid;
+  grid-template-columns: 15% 15% 15% auto;
+  grid-gap: 10px;
+  border: thick double #32a1ce;
+  padding: 10px;
+  text-align: right;
+  font-size: 20px;
+  font-weight: 100;
+  background-color: #BFE3B4;
+}
 
+.search {
+  grid-column: 1;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.search-input {
+  grid-column: 2;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.search-results {
+  grid-column: 4;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+#query {
+  height: 50px;
+  width: 150px;
+  font-size: 15px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+div #results {
+  width: 500px;
+  height: 100px;
+  font-size: 15px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  overflow: auto;
+  background-color: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+}
+
+.search-button-div {
+  grid-column: 3;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  overflow: auto;
+}
+
+.search-button {
+  background-color: brown;
+  border-radius: 10%;
+  height: 50px;
+  width: 100px;
+  font-size: 20px;
+  text-align: center;
 }
 
 /* Board */

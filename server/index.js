@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 const db = require('../database/index.js');
+const request = require('request');
 const Entry = require('../database/schema.js');
 
 
@@ -16,6 +17,29 @@ app.get('/items', function(req, res) {
   .then((all) => res.json(all))
   .catch(err => err);
 })
+///food/${req.body}
+
+app.get('/items/USDA', function(req, res) {
+  var search = Object.keys(req.query)[0];
+  request(`https://api.nal.usda.gov/fdc/v1/foods/search?api_key=gURpydyhWG9u4QpNoxZGUo1MmBNwfLv2gTA6lbuk&query=${search}`, function (error, response, body) {
+    if (error) {
+      res.send('error:', error); // Print the error if one occurred
+    } else {
+      var results = JSON.parse(response.toJSON().body).foods;
+      var filtered = [];
+      results.map(each => {
+        var obj = {};
+        obj['description'] = each.description;
+        obj['foodNutrients'] = each.foodNutrients;
+        filtered.push(obj);
+      })
+      res.send(filtered);
+    }
+    console.log('statusCode:', response.statusCode);
+  });
+})
+
+
 
 app.post('/items', (req, res) => {
   Entry.create(req.body)

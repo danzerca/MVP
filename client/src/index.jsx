@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
 import Post from './components/Post.jsx';
+import Search from './components/Search.jsx';
 import Exchange from './components/Exchange.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      avail: []
+      avail: [],
+      results: ['Results']
     };
   }
 
@@ -27,6 +29,24 @@ class App extends React.Component {
       }
     });
   }
+
+  getUSDA(item) {
+    var state = this;
+
+    $.ajax('/items/USDA', {
+      method: 'GET',
+      dataType: 'json',
+      data: item,
+      success: (info) => {
+        var value = [];
+        info[0].foodNutrients.map(each => {
+          var entry = each.nutrientName + ': ' + each.value + ' ' + each.unitName;
+          value.push(entry);
+        });
+        state.setState({ results: value });
+      }
+  });
+}
 
   updateItem(entry) {
     if (entry.qty-1 < 1) {
@@ -62,7 +82,6 @@ class App extends React.Component {
     });
   }
 
-
   render() {
     return (
       <div>
@@ -72,6 +91,7 @@ class App extends React.Component {
         </div>
 
         <Post onSubmit={this.handleSubmit} onRefresh={this.getItems.bind(this)}/>
+        <Search onSearch={this.getUSDA.bind(this)} onRefresh={this.getItems.bind(this)} searchResults={this.state.results}/>
         <Exchange items={this.state.avail} onUpdate={this.updateItem} onRefresh={this.getItems.bind(this)}/>
       </div>
 
