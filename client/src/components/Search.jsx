@@ -38,11 +38,8 @@ class Search extends React.Component {
           <div className="search-results">
             <div type="text" id="results">
               {curr.props.searchResults.map((each) => (<span >{each}</span>))}
-
             </div>
           </div>
-
-
       </div>
     )
   }

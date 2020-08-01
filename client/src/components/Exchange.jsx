@@ -27,7 +27,6 @@ class Exchange extends React.Component {
             <button className="claim" onClick={curr.handleClick.bind(this, each)}>Claim</button>
           </span>
         ))}
-
       </div>
     )
   }
